@@ -13,7 +13,17 @@ allprojects {
 
 #如果需要使用ButterKnife
 
-apply plugin: 'com.jakewharton.butterknife' (library)
+(项目根目录的build.gradle中添加)
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+    }
+}
+apply plugin: 'com.jakewharton.butterknife' (library才添加,因为需要R2)
 annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
 #需要使用Arouter
@@ -29,7 +39,7 @@ annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 assets/litepal.xml中添加mapping  <mapping class="com.cample.app.Album" />(在主工程中进行添加)
 
 #添加自定义生命周期监听
-实现IModuleConfiguration接口
+实现IModuleConfiguration接口(可选)
 
 
 2.混淆配置:
